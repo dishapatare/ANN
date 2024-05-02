@@ -1,0 +1,41 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#define training data
+x_train = np.array([[2,4],[4,3],[5,6],[7,5],[9,4],[6,2],[8,3]])
+y_train = np.array([1, 1, 1, 1, -1, -1, -1])
+
+#initialize weights and bias randomly
+weights = np.random.rand(2)
+bias = np.random.rand()
+
+#training the perceptron
+learing_rate = 0.1
+num_epochs = 100
+
+for i in range(num_epochs):
+  for input,label in zip(x_train,y_train):
+    sum = np.dot(weights, input) + bias
+
+    if sum >= 0:
+      activation = 1
+    else :
+      activation = -1
+
+    error = label-activation
+    weights += learing_rate * error * input
+    bias += learing_rate * error
+
+#decision region plot
+plt.figure(figsize=(8,6))
+plt.scatter(x_train[:,0],x_train[:,1], c=y_train, cmap='viridis')
+
+x = np.linspace(0,10,100)
+y = -(weights[0] * x + bias)/weights[1]
+plt.plot(x,y,color='green', label='Decision boundary')
+
+plt.xlabel('feature 1')
+plt.ylabel('feature 2')
+plt.title("Decision Boundary region")
+plt.grid(True)
+plt.show()

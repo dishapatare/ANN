@@ -1,0 +1,24 @@
+w1 = 1
+w2 = -1
+threshold = 1
+
+def andnot(x1,x2):
+  y = (x1*w1) + (x2*w2)
+
+  if y >= threshold:
+    return 1
+  else:
+    return 0
+
+a = int(input("Enter input 1 : "))
+b = int(input("Enter input 2 : "))
+if andnot(a,b):
+  print("Neoron activated")
+else:
+  print("Not activated")
+
+# for all possible inputs
+input_combinations = [(0,0),(0,1),(1,0),(1,1)]
+for x1,x2 in input_combinations:
+  output = andnot(x1,x2)
+  print(f"input {x1}\t{x2} -> output : {output}")

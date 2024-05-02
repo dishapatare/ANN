@@ -1,0 +1,70 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#step function
+def step(x):
+  if x >= 0:
+    return 1
+  else:
+    return 0
+
+x = np.linspace(-5,5,10)
+y = [step(i) for i in x]
+plt.plot(x,y)
+plt.xlabel('x values')
+plt.ylabel('step(x)')
+plt.title('Step Function')
+plt.grid(True)
+plt.show()
+
+#sigmoid function
+def sigmoid(x):
+  return 1 / (1 + (np.exp(-x)))
+
+x = np.linspace(-10,10)
+y = sigmoid(x)
+plt.plot(x,y)
+plt.xlabel('x values')
+plt.ylabel('sigmoid(x)')
+plt.title('Sigmoid Function')
+plt.grid(True)
+plt.show()
+
+#relu Function
+def relu(x):
+  return max(0,x)
+
+x = np.linspace(-10,10)
+y = [relu(i) for i in x]
+plt.plot(x,y)
+plt.xlabel('x values')
+plt.ylabel('relu(x)')
+plt.title('Relu Function')
+plt.grid(True)
+plt.show()
+
+#Tanh Function
+def tanh(x):
+  return (2 / (1 + (np.exp(-2*x)))) -1
+
+x = np.linspace(-10,10)
+y = tanh(x)
+plt.plot(x,y)
+plt.xlabel('x values')
+plt.ylabel('Tanh(x)')
+plt.title('Tanh Function')
+plt.grid(True)
+plt.show()
+
+#softmax function
+def softmax(x):
+  return np.exp(x)/(np.exp(np.sum(x)))
+
+x = np.linspace(-10,10)
+y = softmax(x)
+plt.plot(x,y)
+plt.xlabel('x values')
+plt.ylabel('Softmax(x)')
+plt.title('Softmax Function')
+plt.grid(True)
+plt.show()

@@ -1,0 +1,50 @@
+import numpy as np
+
+def e_output(a):
+  if a%2==0:
+    return 1
+  else:
+    return 0
+
+n = int(input("Enter a number : "))
+m = ord(str(n))
+input_array = bin(m).replace('b','0')
+expected_output = e_output(n)
+print("input_array : ",input_array)
+print("Expected_output : ",expected_output)
+
+weight = 1
+bias = 2
+sum = 0
+epoch = 15
+
+for j in range(epoch):
+  for i in range(len(input_array)):
+    sum = sum + int(input_array[i]) * weight
+  output = sum + bias
+  print("output: ",output)
+
+  if output > 0:
+    predicted = 1
+  else:
+    predicted = 0
+
+  if expected_output == predicted:
+    break
+  else:
+    for k in range(len(input_array)):
+      weight = weight + ((0.1)+(expected_output - predicted) * int(input_array[k]))
+
+if predicted == 1:
+  print("Even")
+else:
+  print("odd")
+
+
+num = 9
+binary_representation = bin(num)
+print(binary_representation)  # Output: 0b1010
+
+char = 9
+unicode_code_point = ord(str(char))
+print(unicode_code_point)  # Output: 65
